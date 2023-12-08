@@ -1,0 +1,4 @@
+RewriteEngine On
+
+RewriteRule ^([a-zA-Z0-9_-]+)-([0-9]+).html$ index.php?mod=page&act=controller=index&action=detail&id=1
+
