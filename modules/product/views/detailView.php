@@ -9,7 +9,7 @@
                         <a href="?" title="">Trang chủ</a>
                     </li>
                     <li>
-                        <a href="" title=""><?php echo $product_item['category_product']; ?></a>
+                        <a href="" title=""><?php echo $info_cat['title']; ?></a>
                     </li>
                 </ul>
             </div>
@@ -19,7 +19,7 @@
                 <div class="section-detail clearfix">
                     <div class="thumb-wp fl-left">
                         <a href="" title="" id="main-thumb">
-                            <img id="zoom" src="admin/<?php echo $related_image[0]; ?>"/>
+                            <img id="zoom" src="admin/<?php echo $product_item['image']; ?>"/>
                         </a>
                         <?php if (!empty($related_image)) { ?>
                             <div id="list-thumb">
@@ -36,7 +36,7 @@
                         ?>
                     </div>
                     <div class="thumb-respon-wp fl-left">
-                        <img src="admin/uploads/<?php echo $product_item['image']; ?>">
+                        <img src="admin/<?php echo $product_item['image']; ?>">
                     </div>
                     <div class="info fl-right">
                         <h3 class="product-name"><?php echo $product_item['name']; ?></h3>
@@ -48,11 +48,6 @@
                             <span class="status">Còn hàng</span>
                         </div>
                         <p class="price"><?php echo currency_format($product_item['price_new']); ?></p>
-                        <div id="num-order-wp">
-                            <a title="" id="minus"><i class="fa fa-minus"></i></a>
-                            <input type="text" name="num-order" value="1" id="num-order">
-                            <a title="" id="plus"><i class="fa fa-plus"></i></a>
-                        </div>
                         <a href="<?php echo $product_item['url_add_cart']; ?>" title="Thêm giỏ hàng" class="add-cart">Thêm giỏ hàng</a>
                     </div>
                 </div>
@@ -71,10 +66,10 @@
                 </div>
                 <div class="section-detail">
                     <?php if (!empty($list_item)) { ?>
-                        <ul class="list-item">
+                        <ul class="list-item list-items">
                             <?php foreach ($list_item as $item) { ?>
                                 <li>
-                                    <a href="<?php echo $item['url'] ?>" title="" class="thumb">
+                                    <a href="<?php echo $item['url'] ?>" title="" class="thumb product-thumb">
                                         <img src="admin/<?php echo $item['image']; ?>">
                                     </a>
                                     <a href="<?php echo $item['url'] ?>" title="" class="product-name"><?php echo $item['name']; ?></a>
@@ -84,7 +79,7 @@
                                     </div>
                                     <div class="action clearfix">
                                         <a href="<?php echo $item['url_add_cart'] ?>" title="Thêm giỏ hàng" class="add-cart fl-left">Thêm giỏ hàng</a>
-                                        <a href="?page=checkout" title="Mua ngay" class="buy-now fl-right">Mua ngay</a>
+                                        <a href="<?php echo $item['url']; ?>" title="Xem thêm" class="buy-now fl-right">Xem thêm</a>
                                     </div>
                                 </li>
                                 <?php
@@ -104,13 +99,6 @@
                 </div>
                 <div class="secion-detail">
                     <?php echo render_menu($list_cat_products, '', 'list-item'); ?>
-                </div>
-            </div>
-            <div class="section" id="banner-wp">
-                <div class="section-detail">
-                    <a href="" title="" class="thumb">
-                        <img src="public/images/banner.png" alt="">
-                    </a>
                 </div>
             </div>
         </div>

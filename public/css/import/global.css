@@ -15,6 +15,12 @@ img{
     height: auto;
     display: block;
 }
+
+.product-thumb img {
+    max-width: 100%;
+    height: 200px;
+    display: block;
+}
 .fl-left{ float: left;}
 .fl-right{ float: right;}
 #btn-top{

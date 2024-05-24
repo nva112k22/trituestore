@@ -1,12 +1,12 @@
 <html>
     <head>
         <title>Đăng ký</title>
-        <link href="public/css/reset.css" rel="stylesheet" type="text/css"/>
-        <link href="public/css/login.css" rel="stylesheet" type="text/css"/>
+        <link href="public/css/import/login.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div id="wp-form-login">
-            <h1 id="page-title">ĐĂNG KÝ TÀI KHOẢN</h1>
+            <?php echo form_success('success'); ?>
+            <h1 id="page-title">ĐĂNG KÝ</h1>
             <form id="form-login" action="" method="POST">
                 <input type="text" name="fullname" id="fullname" value="<?php echo set_value('fullname') ?>" placeholder="Full name"/>
                 <?php echo form_error('fullname'); ?>

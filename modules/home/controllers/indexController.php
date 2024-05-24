@@ -9,11 +9,11 @@ function construct() {
 function indexAction() {
     $category_products = get_list_products_category();
     $list_slider = get_list_slider();
-    $list_mobile = get_list_mobile();
-    $list_laptop = get_list_laptop();
-    $list_airpot = get_list_airpot();
+    $list_mobile = get_list_product_by_cat_id(1);
+    $list_laptop = get_list_product_by_cat_id(2);
+    $list_airpot = get_list_product_by_cat_id(3);
     $list_hot = get_list_hot();
-    $after = array_combine(range(1, count($list_mobile)), array_values($list_mobile));
+//    $after = array_combine(range(1, count($list_mobile)), array_values($list_mobile));
     $list_product = array();
     if (isset($_POST['sm_s'])) {
         $tukhoa = $_POST['s'];
@@ -21,24 +21,24 @@ function indexAction() {
     }
 //    show_array($list_product);
     if (!empty($list_product)) {
-        $after = $list_product;
+        $list_mobile = $list_product;
         $list_laptop = "";
         $list_airpot = "";
         $list_hot = "";
     }
-    foreach ($after as $item) {
+    foreach ($list_mobile as $item) {
         $item['url'] = "?mod=product&action=detail&id={$item['product_id']}";
         $item['url_add_cart'] = "?mod=cart&action=add&id={$item['product_id']}";
         $related_image= related_image($item['product_id']);
         $item['image'] = $related_image[0];
         $result[] = $item;
-        $after = $result;
+        $list_mobile = $result;
     }
     $data = array(
         'category_products' => $category_products,
         'list_slider' => $list_slider,
+        'list_mobile' => $list_mobile,
         'list_product' => $list_product,
-        'after' => $after,
         'list_laptop' => $list_laptop,
         'list_airpot' => $list_airpot,
         'list_hot' => $list_hot

@@ -89,7 +89,7 @@ get_header();
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th scope="col">#</th>
+<!--                                            <th scope="col">#</th>-->
                                             <th scope="col">Mã</th>
                                             <th scope="col">Khách hàng</th>
                                             <th scope="col">Sản phẩm</th>
@@ -111,9 +111,8 @@ get_header();
                                                 $temp++;
                                                 ?>
                                                 <tr>
-
-                                                    <td><input type="checkbox" name="checkItem" class="checkItem"></td>
-                                                    <td><span class="tbody-text"><?php echo $item['code']; ?></h3></span>
+                                                    <!--<td><input type="checkbox" name="checkItem" class="checkItem"></td>-->
+                                                    <td><span class="tbody-text"><?php echo $item['order_id']; ?></h3></span>
                                                     <td class="clearfix">
                                                         <div class="tb-title fl-left">
                                                             <span class="tbody-text"><?php echo $item['fullname']; ?></span>
@@ -134,8 +133,7 @@ get_header();
                                                     ?>
                                                     <td><span class="tbody-text"><?php echo date("d-m-Y H:i:s", strtotime($item['created_date'])); ?></span></td>
                                                     <td>
-                                                        <a href="<?php echo $item['url_update']; ?>" class="btn btn-success btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
-                                                        <a href="<?php echo $item['url_delete']; ?>" class="btn btn-danger btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>
+                                                        <a href="?mod=home&action=print&code=<?php echo $item['order_id']; ?>" class="btn btn-success btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="print"><i class="fas fa-print"></i></a>
                                                     </td>
                                                 </tr>
                                                 <?php

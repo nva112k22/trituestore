@@ -10,7 +10,7 @@ function indexAction() {
     $num_rows = db_num_rows("SELECT * FROM `tbl_users`");
 //echo $num_rows;
 //Số bản ghi 1 trang
-    $num_per_page = 3;
+    $num_per_page = 10;
 //Tổng số bản ghi hiện có
     $total_row = $num_rows;
 //Số lượng trang

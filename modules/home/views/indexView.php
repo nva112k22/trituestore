@@ -71,7 +71,7 @@ get_header();
                         <ul class="list-item">
                             <?php foreach ($list_hot as $item) { ?>
                                 <li>
-                                    <a href="<?php echo $item['url']; ?>" title="" class="thumb">
+                                    <a href="<?php echo $item['url']; ?>" title="" class="thumb product-thumb">
                                         <img src="admin/<?php echo $item['image']; ?>">
                                     </a>
                                     <a href="<?php echo $item['url']; ?>" title="" class="product-name"><?php echo $item['name']; ?></a>
@@ -81,7 +81,7 @@ get_header();
                                     </div>
                                     <div class="action clearfix">
                                         <a href="<?php echo $item['url_add_cart'] ?>" title="" class="add-cart fl-left">Thêm giỏ hàng</a>
-                                        <a href="?page=checkout" title="" class="buy-now fl-right">Mua ngay</a>
+                                        <a href="<?php echo $item['url']; ?>" title="Xem thêm" class="buy-now fl-right">Xem thêm</a>
                                     </div>
                                 </li>
                                 <?php
@@ -95,14 +95,14 @@ get_header();
             </div>
             <div class="section" id="list-product-wp">
                 <div class="section-head">
-                    <h3 class="section-title"><?php if(!empty($after)) echo "Điện thoại"; ?></h3>
+                    <h3 class="section-title"><?php if(!empty($list_mobile)) echo "Sách kỹ năng"; ?></h3>
                 </div>
                 <div class="section-detail">
-                    <?php if (!empty($after)) { ?>
-                        <ul class="list-item clearfix">
-                            <?php foreach ($after as $item) { ?>
+                    <?php if (!empty($list_mobile)) { ?>
+                        <ul class="list-item list-items">
+                            <?php foreach ($list_mobile as $item) { ?>
                                 <li>
-                                    <a href="<?php echo $item['url']; ?>" title="" class="thumb">
+                                    <a href="<?php echo $item['url']; ?>" title="" class="thumb product-thumb">
                                         <img src="admin/<?php echo $item['image']; ?>">
                                     </a>
                                     <a href="<?php echo $item['url']; ?>" title="" class="product-name"><?php echo $item['name']; ?></a>
@@ -112,7 +112,7 @@ get_header();
                                     </div>
                                     <div class="action clearfix">
                                         <a href="<?php echo $item['url_add_cart'] ?>" title="Thêm giỏ hàng" class="add-cart fl-left">Thêm giỏ hàng</a>
-                                        <a href="?page=checkout" title="Mua ngay" class="buy-now fl-right">Mua ngay</a>
+                                        <a href="<?php echo $item['url']; ?>" title="Xem thêm" class="buy-now fl-right">Xem thêm</a>
                                     </div>
                                 </li>
                                 <?php
@@ -126,14 +126,14 @@ get_header();
             </div>
             <div class="section" id="list-product-wp">
                 <div class="section-head">
-                    <h3 class="section-title"><?php if(!empty($list_laptop)) echo "Laptop"; ?></h3>
+                    <h3 class="section-title"><?php if(!empty($list_laptop)) echo "Sách kinh doanh"; ?></h3>
                 </div>
                 <div class="section-detail">
                     <?php if (!empty($list_laptop)) { ?>
-                        <ul class="list-item clearfix">
+                        <ul class="list-item list-items">
                             <?php foreach ($list_laptop as $item) { ?>
                                 <li>
-                                    <a href="<?php echo $item['url']; ?>" title="" class="thumb">
+                                    <a href="<?php echo $item['url']; ?>" title="" class="thumb product-thumb">
                                         <img src="admin/<?php echo $item['image']; ?>">
                                     </a>
                                     <a href="<?php echo $item['url']; ?>" title="" class="product-name"><?php echo $item['name']; ?></a>
@@ -143,7 +143,7 @@ get_header();
                                     </div>
                                     <div class="action clearfix">
                                         <a href="<?php echo $item['url_add_cart'] ?>" title="Thêm giỏ hàng" class="add-cart fl-left">Thêm giỏ hàng</a>
-                                        <a href="?page=checkout" title="Mua ngay" class="buy-now fl-right">Mua ngay</a>
+                                        <a href="<?php echo $item['url']; ?>" title="Xem thêm" class="buy-now fl-right">Xem thêm</a>
                                     </div>
                                 </li>
                                 <?php
@@ -157,14 +157,14 @@ get_header();
             </div>
             <div class="section" id="list-product-wp">
                 <div class="section-head">
-                    <h3 class="section-title"><?php if(!empty($list_airpot)) echo "Tai nghe"; ?></h3>
+                    <h3 class="section-title"><?php if(!empty($list_airpot)) echo "Sách học tập"; ?></h3>
                 </div>
                 <div class="section-detail">
                     <?php if (!empty($list_airpot)) { ?>
-                        <ul class="list-item clearfix">
+                        <ul class="list-item list-items">
                             <?php foreach ($list_airpot as $item) { ?>
                                 <li>
-                                    <a href="<?php echo $item['url']; ?>" title="" class="thumb">
+                                    <a href="<?php echo $item['url']; ?>" title="" class="thumb product-thumb">
                                         <img src="admin/<?php echo $item['image']; ?>">
                                     </a>
                                     <a href="<?php echo $item['url']; ?>" title="" class="product-name"><?php echo $item['name']; ?></a>
@@ -174,7 +174,7 @@ get_header();
                                     </div>
                                     <div class="action clearfix">
                                         <a href="<?php echo $item['url_add_cart'] ?>" title="Thêm giỏ hàng" class="add-cart fl-left">Thêm giỏ hàng</a>
-                                        <a href="?page=checkout" title="Mua ngay" class="buy-now fl-right">Mua ngay</a>
+                                        <a href="<?php echo $item['url']; ?>" title="Xem thêm" class="buy-now fl-right">Xem thêm</a>
                                     </div>
                                 </li>
                                 <?php
@@ -214,7 +214,7 @@ get_header();
                                             <span class="new"><?php echo currency_format($item['price_new']); ?></span>
                                             <span class="old"><?php echo currency_format($item['price_old']); ?></span>
                                         </div>
-                                        <a href="" title="" class="buy-now">Mua ngay</a>
+                                        <a href="<?php echo $item['url']; ?>" title="Xem thêm" class="buy-now">Xem thêm</a>
                                     </div>
                                 </li>
                                 <?php
@@ -226,17 +226,20 @@ get_header();
                     ?>
                 </div>
             </div>
-            <div class="section" id="banner-wp">
-                <div class="section-detail">
-                    <a href="" title="" class="thumb">
-                        <img src="public/images/banner.png" alt="">
-                    </a>
-                </div>
-            </div>
         </div>
     </div>
 </div>
-
+<script>
+    function buy() {
+        var result = confirm("Bạn có muốn chuyển đến giỏ hàng");
+        if (result == true) {
+            redirect('?mod=cart');
+        } else {
+//            redirect('?');
+        }
+        return result;
+    }
+</script>
 <?php
 get_footer();
 ?>

@@ -28,10 +28,10 @@ get_header();
                         <?php echo form_error('error_image'); ?>
 
                         <label for="number">Số sản phẩm</label>
-                        <input type="text" name="number" id="number" value="<?php echo $info_order['product_quantity']; ?>">
+                        <input type="text" name="number" id="number" value="<?php echo $info_order['product_quantity'];?>" readonly>
                         <?php echo form_error('number'); ?>
                         <label for="total_price">Tổng giá</label>
-                        <input type="text" name="total_price" id="total_price" value="<?php echo $info_order['total_price']; ?>">
+                        <input type="text" name="total_price" id="total_price" value="<?php echo $info_order['total_price']; ?>" readonly>
                         <?php echo form_error('total_price'); ?>
                         <label>Trạng thái</label>
                         <select name="status">

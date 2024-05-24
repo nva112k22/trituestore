@@ -1,8 +1,7 @@
 <html>
     <head>
         <title>Success</title>
-        <link href="public/css/reset.css" rel="stylesheet" type="text/css"/>
-        <link href="public/css/login.css" rel="stylesheet" type="text/css"/>
+        <link href="public/css/import/login.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div id="wp-form-login">

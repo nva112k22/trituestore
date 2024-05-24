@@ -2,8 +2,8 @@
     <div id="foot-body">
         <div class="wp-inner clearfix">
             <div class="block" id="info-company">
-                <h3 class="title">ISMART</h3>
-                <p class="desc">ISMART luôn cung cấp luôn là sản phẩm chính hãng có thông tin rõ ràng, chính sách ưu đãi cực lớn cho khách hàng có thẻ thành viên.</p>
+                <h3 class="title">Nhà sách trí tuệ</h3>
+                <p class="desc">Luôn cung cấp luôn là sản phẩm chính hãng có thông tin rõ ràng, chính sách ưu đãi cực lớn cho khách hàng có thẻ thành viên.</p>
                 <div id="payment">
                     <div class="thumb">
                         <img src="public/images/img-foot.png" alt="">
@@ -14,14 +14,14 @@
                 <h3 class="title">Thông tin cửa hàng</h3>
                 <ul class="list-item">
                     <li>
-                        <p>106 - Trần Bình - Cầu Giấy - Hà Nội</p>
+                        <p>Đại Đồng - Thạch Thất - Hà Nội</p>
                     </li>
                     <li>
-                        <p>0987.654.321 - 0989.989.989</p>
+                        <p>038 382 6732</p>
                     </li>
-                    <li>
+<!--                    <li>
                         <p>vshop@gmail.com</p>
-                    </li>
+                    </li>-->
                 </ul>
             </div>
             <div class="block menu-ft policy" id="info-shop">
@@ -55,7 +55,7 @@
     </div>
     <div id="foot-bot">
         <div class="wp-inner">
-            <p id="copyright">© Bản quyền thuộc về unitop.vn | Php Master</p>
+            <p id="copyright">2024 ©</p>
         </div>
     </div>
 </div>

@@ -20,7 +20,7 @@ function indexAction() {
 //echo $page;
     $start = ($page - 1) * $num_per_page;
 //echo $start;
-
+    $list_hot = get_list_hot();
 
     $list_posts = get_posts($start, $num_per_page);
     foreach ($list_posts as &$posts) {
@@ -36,7 +36,8 @@ function indexAction() {
         'page' => $page,
         'start' => $start,
         'total_row' => $total_row,
-        'created_user' => user_login()
+        'created_user' => user_login(),
+        'list_hot' => $list_hot
     );
     load_view('index', $data);
 }
@@ -44,6 +45,11 @@ function indexAction() {
 function detailAction() {
     $id = (int) $_GET['id'];
     $post_by_id = get_post_by_id($id);
+    $list_hot = get_list_hot();
     $data['post_by_id'] = $post_by_id;
+    $data = array(
+        'post_by_id' => $post_by_id,
+        'list_hot' => $list_hot
+    );
     load_view('detail', $data);
 }

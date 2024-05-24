@@ -51,9 +51,6 @@ function indexAction() {
 //    show_array($list_product);
     if (!empty($list_product)) {
         $list_item = $list_product;
-        $list_laptop = "";
-        $list_airpot = "";
-        $list_hot = "";
     }
     foreach ($list_item as $item) {
         $item['url'] = "?mod=product&action=detail&id={$item['product_id']}";
@@ -74,17 +71,8 @@ function indexAction() {
 }
 
 function catAction() {
-//    $num_rows = db_num_rows("SELECT * FROM `tbl_products`");
-//    $list = get_list_products();
-//    show_array($list);
     $category_product_id = (int) $_GET['category_product_id'];
-    if ($category_product_id == 1) {
-        $num_rows = db_num_rows("SELECT * FROM `tbl_products` WHERE category_product LIKE 'Iphone' OR category_product LIKE '%Samsung%' OR category_product LIKE 'Oppo';");
-    } else if ($category_product_id == 3) {
-        $num_rows = db_num_rows("SELECT * FROM `tbl_products` WHERE category_product LIKE '%Samsung%';");
-    } else {
-        $num_rows = db_num_rows("SELECT * FROM `tbl_products` WHERE category_product_id='$category_product_id'");
-    }
+    $num_rows = db_num_rows("SELECT * FROM `tbl_products` WHERE category_product_id='$category_product_id'");
 
 //Số bản ghi 1 trang
     $num_per_page = 8;
@@ -96,7 +84,7 @@ function catAction() {
     $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
 
     $start = ($page - 1) * $num_per_page;
-    $list_item = get_products($start, $num_per_page);
+//    $list_item = get_products($start, $num_per_page);
     $order_by = "";
     if (isset($_POST['submit'])) {
         $selected_val = $_POST['select'];  // Lưu trữ giá trị được chọn trong biến
@@ -111,17 +99,10 @@ function catAction() {
         }
     }
     
-    if ($category_product_id == 1) {
-        $list_item = get_products($start, $num_per_page, "category_product LIKE '%Iphone%' OR category_product LIKE '%Samsung%' OR category_product LIKE '%Oppo%'", $order_by);
-    } else if ($category_product_id == 3) {
-        $list_item = get_products($start, $num_per_page, "category_product LIKE '%Samsung%'", $order_by);
-    } else {
-        $list_item = get_products($start, $num_per_page, "category_product_id='$category_product_id'", $order_by);
-    }
-    
+    $list_item = get_products($start, $num_per_page, "category_product_id='$category_product_id'", $order_by);
     
     #Lấy thông tin của danh mục
-    $info_cat = get_info_cat_pr($category_product_id - 1);
+    $info_cat = get_info_cat($category_product_id);
     #Lấy danh sách sản phẩm
     $list_cat_products = get_list_products_category();
 
@@ -143,16 +124,19 @@ function detailAction() {
     $id = (int) $_GET['id'];
     #Lấy thông tin của danh mục
     $product_item = get_product_by_id($id);
-    $catName = $product_item['category_product'];
-    $list_item = get_list_same_cat($catName, $id);
+//    show_array($product_item);
+    $cat_id = $product_item['category_product_id'];
+    $info_cat = get_info_cat(1);
+    $list_item = get_list_same_cat($cat_id, $id);
 //        show_array($list_item);
+//    $related_image = related_image($id);
     $list_cat_products = get_list_products_category();
-    $related_image = related_image($id);
     $data = array(
+        'info_cat' => $info_cat,
         'product_item' => $product_item,
         'list_item' => $list_item,
+//        'related_image' => $related_image,
         'list_cat_products' => $list_cat_products,
-        'related_image' => $related_image,
     );
     load_view('detail', $data);
 }

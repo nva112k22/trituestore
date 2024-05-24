@@ -67,7 +67,17 @@ get_header();
                                         <div class="clearfix">
                                             <div class="fl-right">
                                                 <!--<input type="submit" id="update-cart" name="btn_update" value="Cập nhật giỏ hàng"/>-->
-                                                <a href="?mod=cart&action=checkout" title="" id="checkout-cart">Thanh toán</a>
+                                                <?php
+                                                if (!is_login()) {
+                                                    ?>
+                                                    <a href="?mod=users&action=login" title="" id="checkout-cart">Thanh toán</a>
+                                                    <?php
+                                                } else {
+                                                    ?>
+                                                    <a href="?mod=cart&action=checkout" title="" id="checkout-cart">Thanh toán</a>
+                                                    <?php
+                                                }
+                                                ?>
                                             </div>
                                         </div>
                                     </td>

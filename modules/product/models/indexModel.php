@@ -18,8 +18,8 @@ function related_image($id) {
     return $image_product['list_image'];
 }
 
-function get_list_same_cat($catName, $id) {
-    $list_item = db_fetch_array("SELECT * FROM `tbl_products` WHERE category_product LIKE '%$catName%' and NOT product_id = {$id}");
+function get_list_same_cat($cat_id, $id) {
+    $list_item = db_fetch_array("SELECT * FROM `tbl_products` WHERE category_product_id = '$cat_id' and NOT product_id = {$id}");
     $result = array(); //Mảng chứa danh sách sản phẩm theo cat_id
     foreach ($list_item as $item) {
         $item['url'] = "?mod=product&action=detail&id={$item['product_id']}";
@@ -31,14 +31,14 @@ function get_list_same_cat($catName, $id) {
     return $result;
 }
 
-function get_info_cat_pr($category_product_id) {
-    $list_product_cat = db_fetch_array("SELECT * FROM `tbl_products_category`");
-    if (array_key_exists($category_product_id, $list_product_cat)) {
-        $list_product_cat[$category_product_id]['url'] = "?mod=product&act=main&category_product_id={$category_product_id}";
-        return $list_product_cat[$category_product_id];
-    }
-    return false;
-}
+//function get_info_cat_pr($category_product_id) {
+//    $list_product_cat = db_fetch_array("SELECT * FROM `tbl_products_category`");
+//    if (array_key_exists($category_product_id, $list_product_cat)) {
+//        $list_product_cat[$category_product_id]['url'] = "?mod=product&act=main&category_product_id={$category_product_id}";
+//        return $list_product_cat[$category_product_id];
+//    }
+//    return false;
+//}
 
 function get_products($start = 1, $num_per_page = 10, $where = "", $order_by = "") {
     if (!empty($where)) {
@@ -63,4 +63,3 @@ function get_list_products_category() {
     $result = db_fetch_array("SELECT * FROM `tbl_products_category`");
     return $result;
 }
-

@@ -12,6 +12,24 @@ get_header();
             font-size: 15px;
             color: #4fa327;
         }
+        .btn-checkout {
+            display: flex;
+            justify-content: space-between;
+        }
+        .btn {
+            color: #fff;
+            border-radius: 5px;
+            background: #f12a43;
+            border: none;
+            box-shadow: 0px;
+            padding: 10px
+        }
+        .place-order-wp {
+            position: absolute;
+            right: 0;
+            transform: translateY(-200%) translateX(-117%);
+            width: max-content;
+        }
     </style>
     <div class="section" id="breadcrumb-wp">
         <div class="wp-inner">
@@ -68,13 +86,14 @@ get_header();
                     </div>
                     <div id="payment-checkout-wp">
                         <ul id="payment_methods">
+                            <h1>Vui lòng chọn phương thức thanh toán:</h1>
                             <li>
                                 <input type="radio" id="direct-payment" name="payment-method" value="Thanh toán online" checked>
-                                <label for="direct-payment">Thanh toán online</label>
+                                <label for="direct-payment">Thanh toán online qua Momo</label>
                             </li>
                             <li>
                                 <input type="radio" id="payment-home" name="payment-method" value="Thanh toán tại nhà">
-                                <label for="payment-home">Thanh toán tại nhà</label>
+                                <label for="payment-home">Thanh toán trực tiếp tại nhà</label>
                             </li>
                         </ul>
                     </div>
@@ -123,6 +142,15 @@ get_header();
 
 
             </div>
+<!--            <div class="btn-checkout">
+                <form class="" method="POST" enctype="application/x-www-form-urlencoded" action="?mod=cart&action=checkoutMomo">
+                    <input type="submit" name="momo" value="Thanh toán qua MOMO QRcode" class="btn btn-danger"/>
+                </form>
+
+                <form class="" method="POST" enctype="application/x-www-form-urlencoded" action="?mod=cart&action=checkoutAtm">
+                    <input type="submit" name="atm" value="Thanh toán qua ATM" class="btn btn-danger"/>
+                </form> 
+            </div>-->
         </div>
     </div>
 </div>

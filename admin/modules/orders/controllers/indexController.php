@@ -11,7 +11,7 @@ function indexAction() {
     $num_rows = db_num_rows("SELECT * FROM `tbl_orders`");
 //echo $num_rows;
 //Số bản ghi 1 trang
-    $num_per_page = 3;
+    $num_per_page = 10;
 //Tổng số bản ghi hiện có
     $total_row = $num_rows;
 //Số lượng trang
@@ -48,19 +48,10 @@ function updateAction() {
     if (isset($_POST['btn_order_update'])) {
         $error = array();
         $success = array();
-        #Kiểm tra number
-        if (empty($_POST['number'])) {
-            $error['number'] = "Không được để trống số lượng";
-        } else {
-            $number = $_POST['number'];
-        }
 
-        #Kiểm tra total_price
-        if (empty($_POST['total_price'])) {
-            $error['total_price'] = "Không được để trống tổng giá";
-        } else {
-            $total_price = $_POST['total_price'];
-        }
+        $number = $_POST['number'];
+
+        $total_price = $_POST['total_price'];
 
         #Kiểm tra status
         if (empty($_POST['status'])) {
@@ -100,11 +91,13 @@ function detailAction() {
     $list_orders = get_order_by_id($id);
     $list_order_items = get_order_items_by_id($id);
     $list_customer = get_customer_by_id($list_orders['customer_id']);
+    $list_paid = get_list_paid();
 
     $data = array(
         'list_orders' => $list_orders,
         'list_order_items' => $list_order_items,
-        'list_customer' => $list_customer
+        'list_customer' => $list_customer,
+        'list_paid' => $list_paid
     );
     load_view('detail', $data);
 }

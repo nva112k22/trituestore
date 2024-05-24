@@ -29,7 +29,7 @@ function get_orders($start = 1, $num_per_page = 10, $where = "") {
     if(!empty($where)) {
         $where = "WHERE {$where}";
     }
-    $list_orders = db_fetch_array("SELECT * FROM `tbl_orders` JOIN `tbl_order_items` ON `tbl_orders`.`order_id` = `tbl_order_items`.`order_id` ORDER BY code DESC, fullname DESC, product DESC, quantity DESC, price DESC, status DESC, created_date DESC {$where} LIMIT {$start}, {$num_per_page};");
+    $list_orders = db_fetch_array("SELECT * FROM `tbl_orders` JOIN `tbl_order_items` ON `tbl_orders`.`order_id` = `tbl_order_items`.`order_id` {$where} LIMIT {$start}, {$num_per_page};");
     return $list_orders;
 }
 

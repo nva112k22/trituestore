@@ -66,7 +66,7 @@
                             <td colspan="7">
                                 <div class="clearfix">
                                     <div class="fl-right">
-                                        <a href="?mod=cart&action=unset" title="" id="checkout-cart">Trang chủ</a>
+                                        <a href="?mod=cart&action=unset" title="" id="checkout-cart">Quay lại trang chủ</a>
                                     </div>
                                 </div>
                             </td>

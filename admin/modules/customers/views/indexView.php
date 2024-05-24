@@ -46,16 +46,16 @@ get_header();
                     <div class="filter-wp clearfix">
                         <ul class="post-status fl-left">
                             <li class="all"><a href="">Tất cả <span class="count">(<?php echo ($total_row); ?>)</span></a> |</li>
-                            <li class="publish"><a href="">Đã đăng <span class="count">(5)</span></a> |</li>
+<!--                            <li class="publish"><a href="">Đã đăng <span class="count">(5)</span></a> |</li>
                             <li class="pending"><a href="">Chờ xét duyệt <span class="count">(5)</span> |</a></li>
-                            <li class="trash"><a href="">Thùng rác <span class="count">(0)</span></a></li>
+                            <li class="trash"><a href="">Thùng rác <span class="count">(0)</span></a></li>-->
                         </ul>
                         <form method="POST" class="form-s fl-right">
                             <input type="text" name="s" id="s">
                             <input type="submit" name="sm_s" value="Tìm kiếm">
                         </form>
                     </div>
-                    <div class="actions">
+<!--                    <div class="actions">
                         <form method="GET" action="" class="form-actions">
                             <select name="actions">
                                 <option value="0">Tác vụ</option>
@@ -64,7 +64,7 @@ get_header();
                             </select>
                             <input type="submit" name="sm_action" value="Áp dụng">
                         </form>
-                    </div>
+                    </div>-->
                     <div class="table-responsive">
                         <table class="table list-table-wp">
                             <thead>
@@ -75,7 +75,7 @@ get_header();
                                     <td><span class="thead-text">Số điện thoại</span></td>
                                     <td><span class="thead-text">Email</span></td>
                                     <td><span class="thead-text">Địa chỉ</span></td>
-                                    <td><span class="thead-text">Đơn hàng</span></td>
+<!--                                    <td><span class="thead-text">Đơn hàng</span></td>-->
                                     <td><span class="thead-text">Thời gian</span></td>
                                     <td><span class="thead-text">Tác vụ</span></td>
                                 </tr>
@@ -99,7 +99,7 @@ get_header();
                                             <td><span class="tbody-text"><?php echo $item['phone_number']; ?></span></td>
                                             <td><span class="tbody-text"><?php echo $item['email']; ?></span></td>
                                             <td><span class="tbody-text"><?php echo $item['address']; ?></span></td>
-                                            <td><span class="tbody-text"><?php echo $item['orderss']; ?></span></td>
+<!--                                            <td><span class="tbody-text"><?php echo $item['orderss']; ?></span></td>-->
                                             <td><span class="tbody-text"><?php echo date("d-m-Y H:i:s", strtotime($item['created_date'])); ?></span></td>
                                             <td>
                                                 <a href="<?php echo $item['url_update']; ?>" class="btn btn-success btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>

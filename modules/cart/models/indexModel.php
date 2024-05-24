@@ -2,8 +2,9 @@
 
 function get_id_user($user_login) {
     $list_users = db_fetch_array("SELECT * FROM `tbl_users`");
-    $after = array_combine(range(1, count($list_users)), array_values($list_users));
-    foreach ($after as $value) {
+//    $after = array_combine(range(1, count($list_users)), array_values($list_users));
+    foreach ($list_users as $value) {
+        if($value['username'] === $user_login)
         return $value['user_id'];
     }
     return false;

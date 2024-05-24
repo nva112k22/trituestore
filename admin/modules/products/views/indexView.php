@@ -45,15 +45,15 @@ get_header();
                     <div class="filter-wp clearfix">
                         <ul class="post-status fl-left">
                             <li class="all"><a href="">Tất cả <span class="count">(<?php echo $total_row; ?>)</span></a> |</li>
-                            <li class="publish"><a href="">Đã đăng <span class="count">(<?php echo success_order(); ?>)</span></a> |</li>
-                            <li class="pending"><a href="">Chờ xét duyệt <span class="count">(<?php echo handle_order(); ?>)</span> |</a></li>
+                            <!--<li class="publish"><a href="">Đã đăng <span class="count">(<?php echo success_order(); ?>)</span></a> |</li>-->
+                            <!--<li class="pending"><a href="">Chờ xét duyệt <span class="count">(<?php echo handle_order(); ?>)</span> |</a></li>-->
                         </ul>
                         <form method="POST" class="form-s fl-right">
                             <input type="text" name="s" id="s">
                             <input type="submit" name="sm_s" value="Tìm kiếm">
                         </form>
                     </div>
-                    <div class="actions">
+<!--                    <div class="actions">
                         <form method="GET" action="" class="form-actions">
                             <select name="actions">
                                 <option value="0">Tác vụ</option>
@@ -62,7 +62,7 @@ get_header();
                             </select>
                             <input type="submit" name="sm_action" value="Áp dụng">
                         </form>
-                    </div>
+                    </div>-->
                     <div class="table-responsive">
                         <table class="table list-table-wp">
                             <thead>

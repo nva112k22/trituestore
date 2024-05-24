@@ -100,3 +100,8 @@ function total_price($list_order_items) {
     return false;
 }
 
+function get_list_paid() {
+    $list_paid = db_fetch_array("SELECT * FROM `momo`");
+    return $list_paid;
+}
+

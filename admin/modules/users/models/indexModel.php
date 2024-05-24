@@ -42,7 +42,7 @@ function check_email($email) {
 }
 
 function check_login($username, $password) {
-    $check_user = db_num_rows("SELECT * FROM `tbl_users` WHERE `username` = '{$username}' AND `password` = '{$password}'");
+    $check_user = db_num_rows("SELECT * FROM `tbl_users` WHERE `username` = '{$username}' AND `password` = '{$password}' AND `admin`='0'");
 //    echo $check_user;
     if ($check_user > 0)
         return true;

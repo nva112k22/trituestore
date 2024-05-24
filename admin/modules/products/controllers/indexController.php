@@ -12,7 +12,7 @@ function indexAction() {
     $num_rows = db_num_rows("SELECT * FROM `tbl_products`");
 //echo $num_rows;
 //Số bản ghi 1 trang
-    $num_per_page = 5;
+    $num_per_page = 10;
 //Tổng số bản ghi hiện có
     $total_row = $num_rows;
 //Số lượng trang
@@ -233,6 +233,18 @@ function updateAction() {
         //Kết luận
         if (empty($error)) {
             //Update
+            if($parent_Cat == 7) {
+                $data = array(
+                'name' => $product_name,
+                'code' => $product_code,
+                'price_new' => $price_new,
+                'price_old' => $price_old,
+                'descs' => $descs,
+                'desc_detail' => $desc_detail,
+                'status' => $status,
+                'user_id' => get_id_user($user_login)
+            );
+            } else {
             $data = array(
                 'name' => $product_name,
                 'code' => $product_code,
@@ -244,6 +256,7 @@ function updateAction() {
                 'status' => $status,
                 'user_id' => get_id_user($user_login)
             );
+            }
 //            show_array($data);
             $id_insert = update_product_by_id($id, $data);
             $success['success'] = "Cập nhật sản phẩm thành công";
@@ -272,6 +285,7 @@ function updateAction() {
                     $id_insert_img = db_insert("tbl_products_image", $data_img);
                 }
             }
+            
         }
     }
     $related_image = related_image($id);

@@ -81,10 +81,10 @@ get_header();
                 </div>
                 <div class="section-detail">
                     <?php if (!empty($list_item)) { ?>
-                        <ul class="list-item clearfix">
+                        <ul class="list-item list-items">
                             <?php foreach ($list_item as $item) { ?>
                                 <li>
-                                    <a href="<?php echo $item['url'] ?>" title="" class="thumb">
+                                    <a href="<?php echo $item['url'] ?>" title="" class="thumb product-thumb">
                                         <img src="admin/<?php echo $item['image']; ?>">
                                     </a>
                                     <a href="<?php echo $item['url'] ?>" title="" class="product-name"><?php echo $item['name']; ?></a>
@@ -94,7 +94,7 @@ get_header();
                                     </div>
                                     <div class="action clearfix">
                                         <a href="<?php echo $item['url_add_cart'] ?>" title="Thêm giỏ hàng" class="add-cart fl-left">Thêm giỏ hàng</a>
-                                        <a href="?page=checkout" title="Mua ngay" class="buy-now fl-right">Mua ngay</a>
+                                        <a href="<?php echo $item['url']; ?>" title="Xem thêm" class="buy-now fl-right">Xem thêm</a>
                                     </div>
                                 </li>
                                 <?php
@@ -212,13 +212,6 @@ get_header();
                     </form>
                 </div>
             </div>-->
-            <div class="section" id="banner-wp">
-                <div class="section-detail">
-                    <a href="?page=detail_product" title="" class="thumb">
-                        <img src="public/images/banner.png" alt="">
-                    </a>
-                </div>
-            </div>
         </div>
     </div>
 </div>

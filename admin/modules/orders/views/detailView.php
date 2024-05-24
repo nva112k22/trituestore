@@ -1,6 +1,23 @@
 <?php get_header(); ?>
 
 <div id="main-content-wp" class="list-product-page">
+    <style>
+        .paid {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: 700;
+            color: green;
+        }
+        
+        .unpaid {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: 700;
+            color: yellow;
+        }
+    </style>
     <div class="wrap clearfix">
         <?php echo get_sidebar(); ?>
         <div id="content" class="detail-exhibition fl-right">
@@ -14,6 +31,10 @@
                         <span class="detail">#<?php echo $list_orders['order_id']; ?></span>
                     </li>
                     <li>
+                        <h3 class="title">Tên khách hàng</h3>
+                        <span class="detail"><?php echo $list_customer['fullname']; ?></span>
+                    </li>
+                    <li>
                         <h3 class="title">Địa chỉ nhận hàng</h3>
                         <span class="detail"><?php echo $list_customer['address']; ?> / <?php echo $list_customer['phone_number']; ?></span>
                     </li>
@@ -25,14 +46,29 @@
                         <li>
                             <h3 class="title">Tình trạng đơn hàng</h3>
                             <select name="status">
-<!--                            <option value='0'>Chờ duyệt</option>
-                                <option value='1'>Đang vận chuyển</option>
-                                <option value='2'>Thành công</option>-->
+                                <!--                            <option value='0'>Chờ duyệt</option>
+                                                                <option value='1'>Đang vận chuyển</option>
+                                                                <option value='2'>Thành công</option>-->
                                 <option value='<?php echo $list_orders['status']; ?>' selected><?php echo $list_orders['status']; ?></option>                            
                             </select>
                             <!--<input type="submit" name="sm_status" value="Cập nhật đơn hàng">-->
                         </li>
                     </form>
+                    <li>
+                        <?php
+                        foreach ($list_paid as &$paid) {
+                            ?>
+                            <?php
+                            if ($paid['order_id'] === $list_orders['order_id']) {
+                                ?>
+                                <h3 class="paid"><?php echo "Đơn hàng #" . $list_orders['order_id'] . " đã được thanh toán qua MoMo ATM" . "<br>"; ?></h3>
+                                <?php
+                            } 
+                            ?>
+                            <?php
+                        }
+                        ?>
+                    </li>
                 </ul>
             </div>
             <div class="section">

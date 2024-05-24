@@ -21,8 +21,8 @@ function related_image_cart($id) {
 function get_info_cat($cat_id) {
     $list_product_cat = db_fetch_array("SELECT * FROM `tbl_products_category`");
     $cat_id_new = $cat_id - 1;
-    if (array_key_exists($cat_id, $list_product_cat)) {
-        $list_product_cat[$cat_id_new]['url'] = "?mod=product&act=main&cat_id={$cat_id_new}";
+    if (array_key_exists($cat_id_new, $list_product_cat)) {
+        $list_product_cat[$cat_id_new]['url'] = "?mod=product&action=cat&category_product_id={$cat_id_new}";
         return $list_product_cat[$cat_id_new];
     }
     return false;
@@ -32,10 +32,11 @@ function get_list_product_by_cat_id($cat_id) {
     $list_products = db_fetch_array("SELECT * FROM `tbl_products`");
     $result = array();
     foreach ($list_products as $item) {
-        if ($cat_id == $item['cat_id']) {
-            $item['url'] = "?mod=product&act=detail&id={$item['product_id']}";
-            $related_image_cart = related_image_cart($item['product_id']);
-            $item['image'] = $related_image_cart[0];
+        if ($cat_id == $item['category_product_id']) {
+            $item['url'] = "?mod=product&action=detail&id={$item['product_id']}";
+            $item['url_add_cart'] = "?mod=cart&action=add&id={$item['product_id']}";
+            $related_image = related_image($item['product_id']);
+            $item['image'] = $related_image[0];
             $result[] = $item;
         }
     }
@@ -43,14 +44,20 @@ function get_list_product_by_cat_id($cat_id) {
 }
 
 function get_product_by_id($id) {
-    $list_products = db_fetch_array("SELECT * FROM `tbl_products`");
-    $after = array_combine(range(1, count($list_products)), array_values($list_products));
-    if (array_key_exists($id, $after)) {
-        $after[$id]['url_add_cart'] = "?mod=cart&action=add&id={$id}";
-        $after[$id]['url'] = "?mod=product&action=detail&id={$id}";
-        return $after[$id];
+//    $list_products = db_fetch_array("SELECT * FROM `tbl_products`");
+//    $after = array_combine(range(1, count($list_products)), $list_products);
+//        $after = array_filter(array_merge(array(0), $list_products));
+//    if (array_key_exists($id-1, $list_products)) {
+        $list_product = db_fetch_row("SELECT * FROM `tbl_products` where product_id = '$id';");
+    if(!empty($list_product)) {
+        $list_product['url_add_cart'] = "?mod=cart&action=add&id={$id}";
+        $list_product['url'] = "?mod=product&action=detail&id={$id}";
+        $related_image = related_image_cart($id);
+        $list_product['image'] = $related_image[0];
+        return $list_product;
     }
-    return false;
+//    return false;
+    redirect("?");
 }
 
 function add_cart($id) {

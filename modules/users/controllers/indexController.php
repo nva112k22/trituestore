@@ -5,7 +5,6 @@ function construct() {
 //    echo "Dùng chung, load đầu tiên";
     load_model('index');
     load('lib', 'validation');
-    load('lib', 'email');
 }
 
 function indexAction() {
@@ -17,7 +16,7 @@ function indexAction() {
 }
 
 function regAction() {
-    global $error, $username, $password, $email, $fullname;
+    global $error, $success, $username, $password, $email, $fullname;
     if (isset($_POST['btn-reg'])) {
         $error = array();
         if (empty($_POST['fullname'])) {
@@ -29,8 +28,9 @@ function regAction() {
         if (empty($_POST['username'])) {
             $error['username'] = "Không được để trống tên đăng nhập";
         } else {
-            if (!is_username($_POST['username'])) {
-                $error['username'] = "Tên đăng nhập không đúng định dạng";
+            $pattern = '/^[A-Za-z0-9_\.]{6,32}$/';
+            if (!preg_match($pattern, $_POST['username'])) {
+                $error['username'] = "Tên tài khoản không đúng định dạng";
             } else {
                 $username = $_POST['username'];
             }
@@ -68,19 +68,20 @@ function regAction() {
                     'password' => $password,
                     'email' => $email,
                     'active_token' => $active_token,
-                    'reg_date' => time()
+                    'created_date' => time()
                 );
                 add_user($data);
                 $link_active = base_url("?mod=users&action=active&active_token={$active_token}");
                 $content = "<p>Chào bạn {$fullname}</p>
                 <p>Bạn vui lòng click vào đường link này để kích hoạt tài khoản: {$link_active}</p>
                 <p>Nếu không phải bạn đăng ký tài khoản thì hãy bỏ qua email này</p>
-                <p>TeamSupport NVA</p>";
+                <p>TeamSupport ibook</p>";
 
                 send_mail($email, "Nguyễn Viết An", 'Kích hoạt tài khoản', $content);
 
                 //Thông báo
-//                redirect("?mod=users&action=login");
+
+                redirect("?mod=users&action=login");
             } else {
                 $error['account'] = "Email hoặc username đã tồn tại trên hệ thống";
             }
@@ -128,7 +129,7 @@ function loginAction() {
                 }
 
                 //Chuyển hướng đăng nhập
-                redirect('?');
+                redirect('?mod=cart');
             } else {
                 $error['account'] = "Tên đăng nhập hoặc mật khẩu không tồn tại";
             }
@@ -153,11 +154,11 @@ function logoutAction() {
     setcookie('user_login', 'unitop', time() - 3600);
     unset($_SESSION['is_login']);
     unset($_SESSION['user_login']);
-    redirect("?mod=users&action=login");
+    redirect("?");
 }
 
 function resetAction() {
-    global $error, $username, $password;
+    global $error;
     $reset_token = $_GET['reset_token'];
     if (!empty($reset_token)) {
         if (check_reset_token($reset_token)) {
@@ -214,9 +215,9 @@ function resetAction() {
                     $link = base_url("?mod=users&action=reset&reset_token={$reset_token}");
                     $content = "<p>Bạn vui lòng click vào link sau để khôi phục mật khẩu: {$link}</p>
                 <p>Nếu không phải yêu cầu của bạn, vui lòng bỏ qua email này.</p>
-                <p>Team support NVA</p>";
+                <p>Team support ibook</p>";
 
-                    send_mail($email, '', 'Khôi phục mật khẩu PHP Master', $content);
+                    send_mail($email, '', 'Khôi phục mật khẩu ibook', $content);
                 } else {
                     $error['account'] = "Email không tồn tại trên hệ thống";
                 }

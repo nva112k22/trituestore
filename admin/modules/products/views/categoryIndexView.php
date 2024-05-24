@@ -71,10 +71,6 @@ get_header();
                                                 <div class="tb-title fl-left">
                                                     <a href="" title=""><?php echo $item['title']; ?></a>
                                                 </div> 
-                                                <ul class="list-operation fl-right">
-                                                    <li><a href="<?php echo $item['url_update']; ?>" title="Sửa" class="edit"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
-                                                    <li><a href="<?php echo $item['url_delete']; ?>" title="Xóa" class="delete"><i class="fa fa-trash" aria-hidden="true"></i></a></li>
-                                                </ul>
                                             </td>
                                             <td><span class="tbody-text"><?php echo $item['orders']; ?></span></td>
                                             <td><span class="tbody-text"><?php echo $created_user; ?></span></td>

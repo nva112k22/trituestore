@@ -2,12 +2,11 @@
 <html>
     <head>
         <title>Đăng nhập</title>
-        <link href="public/css/import/reset.css" rel="stylesheet" type="text/css"/>
         <link href="public/css/import/login.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div id="wp-form-login">
-            <h1 id="page-title">Đăng nhập</h1>
+            <h1 id="page-title">Đăng nhập admin</h1>
             <form id="form-login" action="" method="POST">
                 <input type="text" name="username" id="username" value="<?php echo set_value('username') ?>" placeholder="User name" autocomplete="false"/>
                 <?php echo form_error('username'); ?>
