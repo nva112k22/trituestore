@@ -18,7 +18,7 @@
  * charset: Mã ký tự nội dung mail(UTF-8)
  */
 
-$config['email'] = Array(
+$config['email'] = array(
     'protocol' => 'smtp',
     'smtp_host' => 'smtp.gmail.com',
     'smtp_port' => 587,
